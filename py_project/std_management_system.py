@@ -106,7 +106,6 @@ class StudentManagement:
                     subjects,
                     row["Attendance"]
                 )
-
                 self.students.append(student)
 
     # Save data to CSV
@@ -128,7 +127,6 @@ class StudentManagement:
 
                 for subject in self.subjects:
                     row[subject] = student.subjects.get(subject, 0)
-
                 writer.writerow(row)
 
     # Add student
@@ -170,41 +168,20 @@ class StudentManagement:
         else:
             print("Invalid student number")
     # Update marks
-    # def update_studentmarks(self):
-    #     std_id = input("Enter student ID: ")
-    #     for student in self.students:
-    #         if student.std_id == std_id:
-    #             subject = input("Enter subject (Python/Java/DBMS): ")
-    #             if subject in student.subjects:
-    #                 student.subjects[subject] = float(
-    #                     input("Enter new marks: ")
-    #                 )
-    #                 self.save_students()
-    #                 print("Marks updated successfully!!")
-    #             else:
-    #                 print("Subject not found")
-    #             return
-    #     print("Student not found")
     def update_studentmarks(self):
         std_id = input("Enter student ID: ")
-
         for student in self.students:
             if student.std_id == std_id:
-
                 print("\nSubjects:", ", ".join(student.subjects.keys()))
 
                 subject = input("Enter subject name to update: ")
 
                 if subject in student.subjects:
-                    student.subjects[subject] = float(
-                        input(f"Enter new {subject} marks: ")
-                    )
-
+                    student.subjects[subject] = float(input(f"Enter new {subject} marks: "))
                     self.save_students()
                     print("Marks updated successfully!!")
                 else:
                     print("Subject not found")
-
                 return
 
         print("Student not found")
